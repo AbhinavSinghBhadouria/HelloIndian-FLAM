@@ -1,0 +1,361 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Light Theme Variables - Lavender / Whitish with Violet Tints */
+  --bg-main: #fcfbfe;
+  --bg-card: rgba(255, 255, 255, 0.86);
+  --bg-card-hover: rgba(255, 255, 255, 0.94);
+  --bg-input: rgba(255, 255, 255, 0.95);
+  
+  --color-saffron: #d97706; /* Darker saffron for readability on light backgrounds */
+  --color-emerald: #059669; /* Darker emerald for text contrast */
+  --color-peacock: #0284c7; /* Peacock Blue */
+  --color-gold: #ca8a04;    /* Mustard Gold */
+  --color-rose: #db2777;    /* Crimson / Rose Pink */
+  --color-indigo: #4f46e5;  /* Deep Indigo Royal Blue */
+  --color-purple: #7c3aed;  /* Royal Purple */
+  
+  --text-primary: #1e1b4b;   /* Very deep indigo/violet for maximum readability */
+  --text-secondary: #312e81; /* Indigo violet secondary */
+  --text-muted: #6366f1;     /* Soft purple-indigo */
+  
+  --border-glass: rgba(124, 58, 237, 0.12); /* Subtle violet border */
+  --border-focus: rgba(124, 58, 237, 0.4);
+  --shadow-glow: 0 0 25px rgba(124, 58, 237, 0.1);
+  --shadow-card: 0 8px 32px 0 rgba(31, 38, 135, 0.08);
+  
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Fullscreen Background Image Overlay Container */
+.bg-overlay-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 0.8s ease-in-out;
+}
+
+/* Translucent overlay to dim/fade the background image and maintain text readability */
+.bg-overlay-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* More transparent light violet tint to make background images more visible */
+  background: linear-gradient(
+    135deg, 
+    rgba(252, 251, 254, 0.68) 0%, 
+    rgba(245, 243, 250, 0.72) 50%, 
+    rgba(238, 233, 248, 0.78) 100%
+  );
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 58, 237, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(124, 58, 237, 0.3);
+}
+
+/* Layout container */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+}
+
+.main-content {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* Header design */
+.app-header {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.app-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, var(--color-saffron) 0%, var(--color-purple) 50%, var(--color-peacock) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.03em;
+}
+
+.app-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  font-weight: 500;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Glassmorphism style card - updated for Light Theme readability */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-glass);
+  border-radius: 1.25rem;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              border-color 0.3s ease, 
+              box-shadow 0.3s ease;
+}
+
+/* Interactive elements */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid transparent;
+  outline: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-purple) 0%, var(--color-indigo) 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.2);
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.3);
+  filter: brightness(1.05);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--text-primary);
+  border: 1px solid var(--border-glass);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(124, 58, 237, 0.25);
+}
+
+.btn-danger {
+  background: rgba(244, 63, 94, 0.08);
+  color: var(--color-rose);
+  border: 1px solid rgba(244, 63, 94, 0.15);
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: rgba(244, 63, 94, 0.15);
+  border-color: rgba(244, 63, 94, 0.25);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Form Styles */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.form-label {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+
+.form-input, .form-textarea, .form-select {
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--bg-input);
+  border: 1px solid var(--border-glass);
+  border-radius: 0.75rem;
+  padding: 0.85rem 1rem;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  border-color: var(--color-purple);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+}
+
+.form-input::placeholder, .form-textarea::placeholder {
+  color: #8b8ea8;
+}
+
+/* Category Badges for Indian Itinerary */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-food { background: rgba(202, 138, 4, 0.1); color: var(--color-gold); border: 1px solid rgba(202, 138, 4, 0.15); }
+.badge-sightseeing { background: rgba(217, 119, 6, 0.1); color: var(--color-saffron); border: 1px solid rgba(217, 119, 6, 0.15); }
+.badge-activity { background: rgba(124, 58, 237, 0.08); color: var(--color-purple); border: 1px solid rgba(124, 58, 237, 0.15); }
+.badge-shopping { background: rgba(219, 39, 119, 0.08); color: var(--color-rose); border: 1px solid rgba(219, 39, 119, 0.15); }
+.badge-transit { background: rgba(2, 132, 199, 0.08); color: var(--color-peacock); border: 1px solid rgba(2, 132, 199, 0.15); }
+.badge-relaxing { background: rgba(5, 150, 105, 0.08); color: var(--color-emerald); border: 1px solid rgba(5, 150, 105, 0.15); }
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 0.5; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+  100% { transform: scale(0.95); opacity: 0.5; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Timeline Layout */
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+  margin-top: 1.5rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--color-purple) 0%, var(--color-indigo) 50%, rgba(79, 70, 229, 0.05) 100%);
+  border-radius: 4px;
+}
+
+/* Drag & Drop Visuals */
+.draggable-stop {
+  cursor: grab;
+  position: relative;
+}
+
+.draggable-stop:active {
+  cursor: grabbing;
+}
+
+.draggable-stop.dragging {
+  opacity: 0.4;
+  border-style: dashed;
+  border-color: var(--color-purple);
+  transform: scale(0.98);
+}
+
+.drop-target-indicator {
+  height: 6px;
+  background: var(--color-purple);
+  border-radius: 4px;
+  margin: 0.5rem 0;
+  box-shadow: 0 0 10px var(--color-purple);
+  animation: pulse-ring 1.5s infinite;
+}
+
+
+/* Interactive elements adjustments for mobile touch targets */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 1.5rem 1rem;
+    gap: 1.5rem;
+  }
+
+  .app-logo {
+    font-size: 2rem;
+  }
+
+  .btn {
+    padding: 0.85rem 1.25rem; /* Larger touch targets for mobile */
+  }
+
+  .timeline {
+    padding-left: 1.5rem;
+  }
+  
+  .timeline::before {
+    left: 5px;
+  }
+}
