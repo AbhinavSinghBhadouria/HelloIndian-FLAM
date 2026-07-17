@@ -86,15 +86,15 @@ export default function StopCard({
         flexDirection: 'column',
         gap: '0.8rem',
         borderLeft: `4px solid ${
-          category.toLowerCase().includes('food') ? 'var(--color-amber)' :
-          category.toLowerCase().includes('sight') ? 'var(--color-teal)' :
+          category.toLowerCase().includes('food') ? 'var(--color-gold)' :
+          category.toLowerCase().includes('sight') ? 'var(--color-saffron)' :
           category.toLowerCase().includes('shop') ? 'var(--color-rose)' :
-          category.toLowerCase().includes('transit') ? 'var(--color-blue)' :
+          category.toLowerCase().includes('transit') ? 'var(--color-peacock)' :
           category.toLowerCase().includes('relax') ? 'var(--color-emerald)' :
           'var(--color-purple)'
         }`,
         transition: 'box-shadow 0.2s ease, transform 0.2s ease',
-        background: 'rgba(15, 23, 42, 0.5)'
+        background: 'var(--bg-card)'
       }}
     >
       {isEditing ? (
@@ -266,7 +266,7 @@ export default function StopCard({
               {/* Action Tips */}
               {stop.tips && (
                 <div style={{ 
-                  background: 'rgba(255, 255, 255, 0.02)', 
+                  background: 'rgba(124, 58, 237, 0.05)', 
                   border: '1px solid var(--border-glass)',
                   borderRadius: '0.6rem',
                   padding: '0.6rem 0.8rem',
@@ -276,7 +276,7 @@ export default function StopCard({
                   alignItems: 'flex-start',
                   gap: '0.4rem'
                 }}>
-                  <Lightbulb size={14} style={{ color: 'var(--color-amber)', flexShrink: 0, marginTop: '2px' }} />
+                  <Lightbulb size={14} style={{ color: 'var(--color-saffron)', flexShrink: 0, marginTop: '2px' }} />
                   <div>
                     <strong style={{ color: 'var(--text-primary)', fontSize: '0.82rem' }}>Tip: </strong>
                     {stop.tips}
@@ -330,7 +330,7 @@ export default function StopCard({
                           }
                         }}
                         onClick={(e) => e.stopPropagation()}
-                        style={{ padding: '0.25rem 0.5rem', fontSize: '0.75rem', borderRadius: '0.5rem', background: 'rgba(15, 23, 42, 0.8)' }}
+                        style={{ padding: '0.25rem 0.5rem', fontSize: '0.75rem', borderRadius: '0.5rem', background: 'var(--bg-input)', color: 'var(--text-primary)', border: '1px solid var(--border-glass)' }}
                       >
                         <option value="" disabled>Day...</option>
                         {allDays.map(dayNum => (

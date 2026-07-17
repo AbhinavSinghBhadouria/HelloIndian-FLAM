@@ -29,7 +29,7 @@ export default function SavePlansSidebar({ savedPlans, onLoadPlan, onDeletePlan,
           bottom: 0,
           width: '320px',
           maxWidth: '85vw',
-          background: 'rgba(11, 16, 30, 0.95)',
+          background: 'rgba(252, 251, 254, 0.96)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
           borderLeft: '1px solid var(--border-glass)',
@@ -105,7 +105,7 @@ export default function SavePlansSidebar({ savedPlans, onLoadPlan, onDeletePlan,
               <div
                 key={plan.id}
                 style={{
-                  background: 'rgba(255, 255, 255, 0.03)',
+                  background: 'var(--bg-card)',
                   border: '1px solid var(--border-glass)',
                   borderRadius: '0.8rem',
                   padding: '1rem',

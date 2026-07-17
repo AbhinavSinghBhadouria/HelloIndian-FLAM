@@ -104,7 +104,7 @@ export default function StatusMessage({ status, error, onRetry, onDemoFallback, 
 
           {isApiKeyError && (
             <div style={{
-              background: 'rgba(15, 23, 42, 0.8)',
+              background: 'var(--bg-card)',
               border: '1px solid var(--border-glass)',
               borderRadius: '0.75rem',
               padding: '1rem',
