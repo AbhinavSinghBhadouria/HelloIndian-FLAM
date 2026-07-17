@@ -314,6 +314,15 @@ ${style ? `Travel Style/Vibe: ${style}` : ''}`;
   }
 });
 
+// Serve static files from the React app dist folder in production
+const distPath = path.join(__dirname, '../dist');
+app.use(express.static(distPath));
+
+// Fallback all other routes to React's index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(distPath, 'index.html'));
+});
+
 // Start listening
 app.listen(PORT, () => {
   console.log(`Server is running in ${process.env.NODE_ENV || 'development'} mode on http://localhost:${PORT}`);

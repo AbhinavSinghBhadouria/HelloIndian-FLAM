@@ -1,5 +1,7 @@
 # HelloIndian - AI Trip Planner
 
+**Demo Video**: [Watch the Demo Video](https://drive.google.com/file/d/1acYnOpCbX9gNbpPkvia7_0qUPZ_HROuO/view?usp=share_link)
+
 A premium, interactive, day-by-day AI travel itinerary planner focusing on travel destinations in India. Users can describe their dream Indian vacation in free-form text, configure filters (duration, travel vibe, destination), and receive a highly detailed, stateful timeline. The app allows users to interactively expand, edit, add, delete, and reorder stops via click actions or drag-and-drop.
 
 Built using **React (functional components, hooks)**, **Express**, and **Groq (Llama 3.3 70B)** with native JSON mode.
